@@ -10,52 +10,53 @@
 
 <body>
   <div class="container">
-    <div class="flip-card">
-      <div class="flip-card-inner">
-        <div class="card_face">
-          <div class="card_bg">
-            <div class="logo"></div>
-            <div class="logo2"></div>
-            <div class="logo3"></div>
-          </div>
+    <div class="flip">
+      <div class="card_face">
+        <div class="card_bg">
+          <img src="./img/masterCard_st.png" class="logotip" id="logo"></img>
 
-          <input type="text" class="card_numbers" id="card_num" placeholder="####  ####  ####  ####">
-
-          <div class="card_data">
-            <div class="card_name">
-              <label for="name"> Card name</label>
-              <input type="text" name="name" id="">
-            </div>
-            <div class="card_date">
-              <label for="name">Expires</label>
-              <input type="text" name="name" id="">
-            </div>
-          </div>
         </div>
 
-        <div class="card_back">
-          <div class="card_bg_back">
-            <div class="logo_back"></div>
+        <input readonly type="text" class="card_numbers" id="card_num">
+
+
+        <div class="card_data">
+          <div class="card_name">
+            <p> Card name</p>
+            <input readonly type="text" name="name" id="card__name" placeholder="AD SOYAT">
           </div>
-          <div class="black_line"></div>
-          <div class="card_data_back">
-            <label for="cvc">CVC</label>
-            <input class="card_cvc_input" type="text" name="cvc">
+          <div class="card_date">
+            <p>Expires</p>
+            <input readonly type="text" name="name" id="card_date_month" placeholder="MM"><span>/</span>
+            <input readonly type="text" name="name" id="card_date_year" placeholder="YY">
+
           </div>
+        </div>
+      </div>
+
+      <div class="card_back hidden">
+        <div class="card_bg_back">
+          <div class="logo_back"></div>
+        </div>
+        <div class="black_line"></div>
+        <div class="card_data_back">
+          <label for="cvc">CVC</label>
+          <input class="card_cvc" type="text" name="cvc">
         </div>
       </div>
     </div>
 
 
+
     <div class="card_form">
       <div class="card_form_number">
         <label for="form_number">Card Number</label>
-        <input type="text" name="form_number" id="">
+        <input type="text" name="form_number" id="form_card_number">
       </div>
 
       <div class="card_form_name">
         <label for="form_name">Card Name</label>
-        <input type="text" name="form_name" id="">
+        <input type="text" name="form_name" maxlength="30" id="form_card_name">
       </div>
 
       <div class="card_form_date">
@@ -91,7 +92,7 @@
 
         <div class="card_form_cvc">
           <label for="form_date">CVC</label>
-          <input type="text" name="form_cvc" id="">
+          <input type="text" name="form_cvc" maxlength="3" id="form_card_cvc">
         </div>
 
         <button class="btn_submit">Submit</button>
@@ -100,6 +101,7 @@
 
     </div>
   </div>
+
 
   <script src="script.js"></script>
 </body>
