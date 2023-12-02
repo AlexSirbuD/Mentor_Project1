@@ -20,6 +20,10 @@ const flip = document.querySelector(".flip");
 
 const logo = document.getElementById('logo');
 
+const activeBox = document.querySelector('.active_box')
+const activeBox2 = document.querySelector('.active_box2')
+const activeBox3 = document.querySelector('.active_box3')
+
 const images = [
   './img/visaLogo_st.png',
   './img/discoverLogo_st.png',
@@ -39,8 +43,15 @@ const change = () => {
 window.onload = function () {
   cardNumber.value = values4by4
   setInterval(change, 8000)
+
 };
 
+cardInputNumber.addEventListener('click', () => {
+  activeBox.classList.remove('box_hidden');
+  activeBox2.classList.add('box_hidden');
+  activeBox3.classList.add('box_hidden');
+  activeBox3.classList.toggle('active_box_animation')
+});
 
 cardInputNumber.addEventListener('input', (e) => {
 
@@ -48,7 +59,7 @@ cardInputNumber.addEventListener('input', (e) => {
   let numbers4by4 = '';
   e.target.value = fullNumbers;
   if (fullNumbers.length > 16) {
-    e.preventDefault()
+    // e.preventDefault()
     e.target.value = fullNumbers.substring(0, 16)
     return
   };
@@ -60,13 +71,40 @@ cardInputNumber.addEventListener('input', (e) => {
     numbers4by4 = numbers4by4.concat(fullNumbers[i]);
   }
   cardNumber.value = numbers4by4 + values4by4.slice(numbers4by4.length, values4by4.length);
+  cardNumber.value[1].style.color = 'red'
 });
+
+cardInputName.addEventListener('click', () => {
+  activeBox.classList.add('box_hidden');
+
+  activeBox2.classList.remove('box_hidden');
+  activeBox3.classList.add('box_hidden')
+})
 
 cardInputName.addEventListener('input', (e) => {
 
   cardName.value = (e.target.value).toUpperCase();
 });
 
+
+cardInputMonth.addEventListener('click', () => {
+  activeBox2.classList.add('box_hidden');
+  activeBox3.classList.remove('box_hidden')
+  setTimeout(() => {
+    if (a)
+      activeBox3.classList.add('active_box_animation')
+    // activeBox3.style.animation = 'none'
+  }, 500)
+})
+
+cardInputYear.addEventListener('click', () => {
+  activeBox2.classList.add('box_hidden');
+  activeBox3.classList.remove('box_hidden')
+  setTimeout(() => {
+    activeBox3.classList.add('active_box_animation')
+    // activeBox3.style.animation = 'none'
+  }, 500)
+})
 cardInputMonth.addEventListener('input', (e) => {
   cardMonth.value = e.target.value
 })
@@ -77,8 +115,9 @@ cardInputYear.addEventListener('input', (e) => {
 
 cardInputCvc.onblur = () => {
   flip.classList.toggle("is-flipped");
-  cardFace.classList.remove('hidden')
-  cardBack.classList.toggle('hidden')
+  cardFace.classList.remove('hidden');
+  cardBack.classList.toggle('hidden');
+  activeBox3.classList.add('box_hidden')
   // cardFace.style.display = 'block';
   // cardBack.style.display = 'none';
 
@@ -86,8 +125,9 @@ cardInputCvc.onblur = () => {
 
 cardInputCvc.onfocus = (e) => {
   flip.classList.toggle("is-flipped");
-  cardFace.classList.toggle('hidden')
-  cardBack.classList.toggle('hidden')
+  cardFace.classList.toggle('hidden');
+  cardBack.classList.toggle('hidden');
+  // activeBox3.classList.toggle('active_box_animation')
   // cardFace.style.display = 'none';
   // cardBack.style.display = 'block';
   cardInputCvc.addEventListener('input', (e) => {

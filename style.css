@@ -11,6 +11,7 @@ body {
   justify-content: center;
 }
 
+
 /* card back */
 
 .black_line {
@@ -115,6 +116,10 @@ body {
   left: 15px;
   font-size: x-large;
   letter-spacing: 2px;
+}
+
+.card_numbers::first-letter {
+  color: brown;
 }
 
 .card_name {
@@ -301,15 +306,96 @@ span {
   display: none;
 }
 
+
+/* active box */
+
+.active_box,
+.active_box2,
+.active_box3 {
+  border: 1px solid white;
+  border-radius: 5px;
+  position: absolute;
+  display: flex;
+  z-index: 2;
+
+}
+
+.box_hidden {
+  display: none;
+}
+
+.active_box {
+  width: 330px;
+  height: 40px;
+  top: 110px;
+  left: 7px;
+}
+
+.active_box2 {
+  width: 235px;
+  height: 45px;
+  top: 167px;
+  left: 7px;
+  animation: moving_box2 0.5s linear;
+}
+
+.active_box3 {
+  width: 85px;
+  height: 45px;
+  top: 167px;
+  left: 250px;
+  animation: moving_box3 .5s linear;
+}
+
+.active_box_animation {
+  animation: none;
+}
+
 /* Animations */
+
+
+@keyframes moving_box2 {
+  0% {
+    top: 110px;
+    left: 7px;
+  }
+
+  100% {
+    width: 235px;
+    height: 45px;
+    top: 167px;
+    left: 7px;
+  }
+}
+
+@keyframes moving_box3 {
+  0% {
+    top: 167px;
+    left: 7px;
+    width: 50%;
+    height: 45px;
+  }
+
+  50% {
+    width: 167px;
+    height: 45px;
+    top: 167px;
+    right: 250px;
+  }
+
+  200% {
+    width: 50%;
+    height: 45px;
+    top: 167px;
+    left: 250px;
+  }
+}
 
 .flip {
   transform-style: preserve-3d;
   transform-origin: center right;
   transition: all 0.5s;
-
 }
-
 
 .flip.is-flipped {
   transform: translateX(-100%) rotateY(-180deg);
@@ -317,7 +403,6 @@ span {
 }
 
 @keyframes appearDisappear {
-
   0% {
     opacity: 0;
     transform: translateY(0%);
