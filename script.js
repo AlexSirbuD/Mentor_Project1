@@ -24,6 +24,8 @@ const activeBox = document.querySelector('.active_box')
 const activeBox2 = document.querySelector('.active_box2')
 const activeBox3 = document.querySelector('.active_box3')
 
+
+
 const images = [
   './img/visaLogo_st.png',
   './img/discoverLogo_st.png',
@@ -53,26 +55,75 @@ cardInputNumber.addEventListener('click', () => {
   activeBox3.classList.toggle('active_box_animation')
 });
 
+// cardInputNumber.addEventListener('input', (e) => {
+
+//   let fullNumbers = e.target.value.replace(/\D/g, '');
+//   let numbers4by4 = '';
+//   e.target.value = fullNumbers;
+//   if (fullNumbers.length > 16) {
+//     // e.preventDefault()
+//     e.target.value = fullNumbers.substring(0, 16)
+//     return
+//   };
+
+//   fullNumbers = fullNumbers.split(' ').join('');
+
+//   for (let i = 0; i < fullNumbers.length; i++) {
+//     if (i % 4 == 0 && i > 0) numbers4by4 = numbers4by4.concat('  ');
+//     numbers4by4 = numbers4by4.concat(fullNumbers[i]);
+//   }
+//   cardNumber.value = numbers4by4 + values4by4.slice(numbers4by4.length, values4by4.length);
+//   cardNumber.value[1].style.color = 'red'
+// });
+
+// proba
+
+const numbers = document.querySelectorAll('.animated-heading');
+const input = document.getElementById('input');
+
+let index = 0;
 cardInputNumber.addEventListener('input', (e) => {
 
   let fullNumbers = e.target.value.replace(/\D/g, '');
-  let numbers4by4 = '';
   e.target.value = fullNumbers;
-  if (fullNumbers.length > 16) {
-    // e.preventDefault()
+  if (index > 16) {
+    e.preventDefault()
     e.target.value = fullNumbers.substring(0, 16)
+    index = 16
     return
   };
+  for (let i = 0; i < numbers.length; i++) {
 
-  fullNumbers = fullNumbers.split(' ').join('');
-
-  for (let i = 0; i < fullNumbers.length; i++) {
-    if (i % 4 == 0 && i > 0) numbers4by4 = numbers4by4.concat('  ');
-    numbers4by4 = numbers4by4.concat(fullNumbers[i]);
+    numbers[i].innerHTML = cardInputNumber.value[i]
+    if (numbers[i].innerHTML === 'undefined') {
+      numbers[i].innerHTML = '#'
+    }
   }
-  cardNumber.value = numbers4by4 + values4by4.slice(numbers4by4.length, values4by4.length);
-  cardNumber.value[1].style.color = 'red'
-});
+
+
+  let elem = document.getElementById(`${index}`)
+  const spanUnu = document.createElement('span')
+  spanUnu.setAttribute('id', `span_${index}`)
+  elem.value = cardInputNumber.value
+  elem.appendChild(spanUnu)
+  elem.classList.remove('animation_down')
+  elem.classList.add('animation')
+})
+
+cardInputNumber.addEventListener('keydown', (e) => {
+  if (e.keyCode == 8) {
+    let elem = document.getElementById(`${index}`)
+    elem.removeChild(document.getElementById(`span_${index}`))
+    elem.classList.remove('animation')
+    elem.classList.add('animation_down')
+    index--
+    console.log(index)
+  }
+  else {
+    index++
+    console.log(index)
+  }
+})
 
 cardInputName.addEventListener('click', () => {
   activeBox.classList.add('box_hidden');

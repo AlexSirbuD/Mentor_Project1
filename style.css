@@ -107,14 +107,15 @@ body {
 
 .card_numbers {
   color: white;
-  position: relative;
+  position: absolute;
   background: transparent;
   border: none;
+  display: flex;
   width: 310px;
   height: 30px;
-  top: 95px;
+  top: 115px;
   left: 15px;
-  font-size: x-large;
+  font-size: 30px;
   letter-spacing: 2px;
 }
 
@@ -124,7 +125,7 @@ body {
 
 .card_name {
   position: relative;
-  top: 110px;
+  top: 142px;
   left: 15px;
   display: inline;
 
@@ -149,8 +150,8 @@ body {
 
 .card_date {
   position: relative;
-  top: 110px;
-  left: 10%;
+  top: 142px;
+  left: 8%;
   display: inline;
 }
 
@@ -452,5 +453,74 @@ span {
   100% {
     -webkit-transform: translateY(500%);
     visibility: hidden;
+  }
+}
+
+/* proba */
+
+
+/* .txt {
+  text-align: center;
+  font-size: 40px;
+  display: block;
+
+} */
+
+.numbers {
+  position: relative;
+  display: flex;
+}
+
+.space {
+  margin: 0px 5px;
+}
+
+.animation {
+  animation: spin 2s alternate;
+
+}
+
+.animation_down {
+  animation: re_spin 2s alternate;
+
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-margin-top: 0;
+  }
+
+  50% {
+    -webkit-margin-top: -180px;
+  }
+}
+
+@keyframes spin {
+  0% {
+    margin-top: 0;
+  }
+
+  16% {
+    margin-top: -5px;
+  }
+}
+
+@-webkit-keyframes re_spin {
+  0% {
+    -webkit-margin-top: 0;
+  }
+
+  50% {
+    -webkit-margin-top: -180px;
+  }
+}
+
+@keyframes re_spin {
+  0% {
+    margin-top: 0;
+  }
+
+  16% {
+    margin-top: -5px;
   }
 }
